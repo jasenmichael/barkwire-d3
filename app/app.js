@@ -24,13 +24,13 @@ app.get("/", (request, response) => {
 app.get("/dogs", (request, response) => {
     response.render("dogs");
 });
+app.get("/dogs/new", (request, response) => {
+    response.render("new-dog");
+});
 app.get("/dogs/:id", (request, response) => {
     response.render("dog");
 });
 
-app.get("/dogs/new", (request, response) => {
-    response.render("new-dog");
-});
 
 // API Routes
 const queries = require("./data/queries");
