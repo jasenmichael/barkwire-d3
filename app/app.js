@@ -28,6 +28,10 @@ app.get("/dogs/:id", (request, response) => {
     response.render("dog");
 });
 
+app.get("/dogs/new", (request, response) => {
+    response.render("new-dog");
+});
+
 // API Routes
 const queries = require("./data/queries");
 app.get("/api/dogs", (request, response) => {
