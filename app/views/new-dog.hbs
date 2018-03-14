@@ -1,8 +1,46 @@
-<!-- <form>
-  <input type="text" name="name" value="name">
-  <input type="text" name="profile-picture" value="">
-  <input type="text" name="bio" value="">
-  <button type="button" name="button">Submit</button>
-</form> -->
+<h1>Add Dog</h1>
+<br>
+<div class="form">
+  <form>
+    Name:<br>
+    <input id="enteredName" type="text" name="name" value="">
+    <br> Profile Picture<br>
+    <input id="enteredPicUrl" type="text" name="profile-picture" value="">
+    <br> Bio:
+    <br>
+    <input id=enteredBio "" type="text" name="bio" value="">
+    <input onclick="postDog(event)" type="submit" name="button"></input>
+  </form>
+</div>
 
-<h1>yoyoyoy</h1>
+
+<script type="text/javascript">
+  function postDog(event) {
+    event.preventDefault()
+    let enteredName = document.querySelector("#enteredName")
+    let enteredPicUrl = document.querySelector("#enteredPicUrl")
+    let enteredBio = document.querySelector("#enteredBio")
+
+    let newObject = {
+      "name": enteredName.value,
+      "profilePicture": enteredPicUrl.value,
+      "bio": enteredBio.value
+    }
+
+    fetch("http://localhost:3000/api/dogs", {
+        method: 'POST',
+        body: JSON.stringify(newObject),
+        headers: new Headers ({
+          "Content-Type": "application/json"
+        })
+      })
+      .then(res => {
+        return res.json()
+      })
+      .then(() => {
+        window.location.assign("/dogs")
+      })
+
+    console.log(newObject)
+  }
+</script>
